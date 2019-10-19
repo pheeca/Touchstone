@@ -1,0 +1,22 @@
+{
+  "name": "touchstone",
+  "version": "1.0.0",
+  "description": "Touchstone: Code Generation Framework",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/pheeca/Touchstone",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "MNC",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^6.0.12"
+  }
+}
