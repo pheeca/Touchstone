@@ -241,7 +241,7 @@ a:hover {
 	text-align: center;
 }
 
-.product {
+.product,.contentpartial {
 	display: inline-block;
 	width: 200px;
 	height: 200px;
@@ -249,7 +249,9 @@ a:hover {
 	border-radius: 5px;
 	background: #1c1d22;
 }
-
+.contentpartial {
+	width: 100%;
+}
 .product .foodicon {
 	font-size: 4em;
 	line-height: 190px;

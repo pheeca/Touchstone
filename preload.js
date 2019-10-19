@@ -1,3 +1,7 @@
+var fs = require('fs');
+const path = require('path');
+const dev = require('./js/framework/main/dev');
+
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 window.addEventListener('DOMContentLoaded', () => {
@@ -10,3 +14,16 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${type}-version`, process.versions[type])
   }
 })
+
+
+window.addEventListener('loadschema', function (e) { 
+  window.schema = JSON.parse(fs.readFileSync(path.join(__dirname, 'storage/schema.json'), 'utf8'));
+ }, false);
+
+ 
+window.addEventListener('saveschema', function (e) { 
+  fs.writeFileSync(path.join(__dirname, 'storage/schema.json'), JSON.stringify(window.schema,null,4));
+ }, false);
+
+
+ window.Dev = dev;

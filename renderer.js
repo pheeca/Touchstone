@@ -4,3 +4,12 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+
+const { remote } = require('electron'),
+currWindow   = remote.getCurrentWindow(),
+appCloseBtn  = document.querySelector('.bp-nav__item');
+
+appCloseBtn.addEventListener('click', e =>{
+ currWindow.close();
+});

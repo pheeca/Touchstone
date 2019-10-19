@@ -9,74 +9,45 @@ let routation = [{
         submenu:[{
             name:"Create Users",
             loader:function(){
-                $(`.content`).html(`<ul class="products"><li class=\"product\"><div class=\"foodicon foodicon--broccoli\"></div></li></ul>`);
+                createUserInit();
             }
         },{
             name:"Setup User Dev Environment"
-        },{
-            name:"Cabbages"
-        },{
-            name:"Salad Greens"
-        },{
-            name:"Mushrooms"
-        },{
-            name:"Sale %",
-            submenu:[{
-                name:"Fair Trade Roots"
-            },{
-                name:"Dried Veggies"
-            },{
-                name:"Our Brand"
-            },{
-                name:"Homemade"
-            }]
         }]
     },{
-        name:"Fruits",
+        name:"Project Config",
         submenu:[{
-            name:"Citrus Fruits"
+            name:"Properties"
         },{
-            name:"Berries"
+            name:"Modules"
         },{
-            name:"Special Selection",
+            name:"Advance Config",
             submenu:[{
-                name:"Exotic Mixes"
+                name:"Multi-Tenancy"
             },{
-                name:"Wild Pick"
-            },{
-                name:"Vitamin Boosters"
+                name:"Audit"
             }]
         },{
-            name:"Tropical Fruits"
-        },{
-            name:"Melons"
+            name:"Stack",
+            submenu:[{
+                name:"Database"
+            },{
+                name:"Back-End"
+            },{
+                name:"Front End"
+            }]
         }]
     },{
-        name:"Grains",
+        name:"Modelling",
         submenu:[{
-            name:"Buckwheat"
+            name:"DB Entities"
         },{
-            name:"Millet"
-        },{
-            name:"Quinoa"
-        },{
-            name:"Wild Rice"
-        },{
-            name:"Durum Wheat"
-        },{
-            name:"Promo Packs",
-            submenu:[{
-                name:"Starter Kit"
-            },{
-                name:"The Essential 8"
-            },{
-                name:"Bolivian Secrets"
-            },{
-                name:"Flour Packs"
-            }]
+            name:"Stored Proc"
         }]
     },{
-        name:"Mylk &amp; Drinks",
+        name:"API Generation"
+    },{
+        name:"Code Generation",
         submenu:[{
             name:"Grain Mylks"
         },{
@@ -95,7 +66,5 @@ let routation = [{
                 name:"Allergy Free"
             }]
         }]
-    },{
-        name:"abc"
     }]
 }]

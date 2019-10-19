@@ -3,7 +3,7 @@ let openMenuCtrl = null;
 let closeMenuCtrl = null;
 let res = [];
 function main(){
-    
+    loadSchema();
 	loadMenu();
 	setupMenu();
 }
@@ -95,3 +95,12 @@ function loadDummyData(ev, itemName) {
 	}, 700);
 }
 
+function loadSchema(){
+	var event = new Event('loadschema');
+	window.dispatchEvent(event);
+}
+
+function saveSchema(){
+	var event = new Event('saveschema');
+	window.dispatchEvent(event);
+}
