@@ -861,8 +861,8 @@
                 "UUID": "667dfa53-285e-42a0-b454-54f195276ddc",
                 "Name": "Faheem",
                 "EnvironmentVariables": {
-                    "ConnectionString": "Server=.\\SQLEXPRESS2017;Database=SSpot;Integrated Security=SSPI",
-                    "ConnectionStringLog": "Server=.\\SQLEXPRESS2017;Database=SSpot_Log;Integrated Security=SSPI",
+                    "ConnectionString": "Server=PHEECA\\SQLEXPRESS2017;Database=SSpot;Integrated Security=SSPI",
+                    "ConnectionStringLog": "Server=PHEECA\\SQLEXPRESS2017;Database=SSpot_Log;User id=sa;password=p@ssword1",
                     "SolutionFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
                     "SolutionStartupFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
                 }

@@ -1,5 +1,5 @@
 let dotnetcore = require('../dotnet/dotnetcore');
-let mssql = require('../database/mssql');
+let mssql = require('../database/ms-sql');
 
 function resolveStack(schema) {
     // Code here

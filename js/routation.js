@@ -12,14 +12,20 @@ let routation = [{
                 createUserInit();
             }
         },{
-            name:"Setup User Dev Environment"
+            name:"Setup User Dev Environment",
+            loader:function(){
+                setupDevEnvInit();
+            }
         }]
     },{
         name:"Project Config",
         submenu:[{
             name:"Properties"
         },{
-            name:"Modules"
+            name:"Modules",
+            loader:function(){
+                setupModulesInit();
+            }
         },{
             name:"Advance Config",
             submenu:[{

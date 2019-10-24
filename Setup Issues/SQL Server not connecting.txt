@@ -1,0 +1,11 @@
+Make sure sql credentials are being used and not windows authentication
+------------------------------------------------------
+Open SQL Server Configuration Manager
+Click SQL Server Network Configuration => Protocols for SQLEXPRESS2012
+Double click TCP/IP
+Change Enabled to Yes
+Click IP Addresses
+IPAll => Clear TCP Dynamic Ports, set TCP Port 1433
+Open services.msc
+Start SQL Server Browser Service
+Restart SQL Server
