@@ -4,8 +4,9 @@ setupModulesInit = function(){
 <div>
 	<label class="label" for="input">Name</label>
     <input class="input" type="text" id="name">
-    </div>
-    <button>Submit</button></div><div>Modules Already Exists : ${schema.Modules.map(e=>e.Name).toLocaleString()}</div>
+	</div>
+	${editableTable(schema.Model.Modules)}
+    <button>Submit</button></div>
     <style>input:focus { 
     outline: none;
     border-color: #5c5edc;
@@ -17,8 +18,10 @@ setupModulesInit = function(){
 $(`.content`).off('click','#createUser *');
 
 $(`.content`).on('click','#createUser button',function(e){
-    //schema.Dev.Users
-  //  schema=Dev.addModule(schema,$('#name').val());
+	  schema=Module.refreshModules(schema,$('.content table tbody tr').toArray().map(e=>$(e).data('info')));
+	  if($('#name').val()){
+		schema=Module.addModule(schema,$('#name').val());
+	  }
     saveSchema();
     setupModulesInit();
 });

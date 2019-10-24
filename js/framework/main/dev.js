@@ -60,6 +60,7 @@ function setSolutionStartupFolder(schema,SolutionStartupFolder){
     });
     return schema;
 }
+
 module.exports = {
     getUsers,
     addUsers,
