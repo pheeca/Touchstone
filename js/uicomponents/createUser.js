@@ -5,18 +5,13 @@ createUserInit = function(){
 	<label class="label" for="input">Name</label>
     <input class="input" type="text" id="name">
     </div>
-    <button>Submit</button></div><div>Users Already Exists : ${Dev.getUsers(schema).map(e=>e.Name).toLocaleString()}</div>
-    <style>input:focus { 
-    outline: none;
-    border-color: #5c5edc;
-    box-shadow: 0 0 10px #5c5edc;
-}</style>`;
+    <button id="createuserbutton">Submit</button></div><div>Users Already Exists : ${Dev.getUsers(schema).map(e=>e.Name).toLocaleString()}</div>
+   `;
     $(`.content`).html(`<div id="createUser" class="products"><div class=\"contentpartial\">${html}</div></div>`);
 
     
-$(`.content`).off('click','#createUser *');
 
-$(`.content`).on('click','#createUser button',function(e){
+$(`#createuserbutton`).on('click',function(e){
     //schema.Dev.Users
     schema=Dev.addUsers(schema,$('#name').val());
     saveSchema();

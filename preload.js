@@ -3,6 +3,7 @@ const path = require('path');
 const dev = require('./js/framework/main/dev');
 const stackFactory = require('./js/framework/main/stackFactory');
 const Module =  require('./js/framework/modelling/module');
+const Entity =  require('./js/framework/modelling/entity');
 
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
@@ -29,5 +30,9 @@ window.addEventListener('saveschema', function (e) {
 
 
  window.Dev = dev;
- window.Stack =stackFactory.resolveStack;
+ window.Stack = stackFactory.resolveStack;
  window.Module = Module;
+ window.Entity = Entity;
+ window.screen = {};
+
+ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';

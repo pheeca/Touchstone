@@ -1,6 +1,6 @@
 
 setupDevEnvInit = function(){
-    let html = `<div><h1>Create Dev User 1</h1>
+    let html = `<div><h1>Create Dev User</h1>
 <div>
 	<label class="label" for="input">Select Current User</label>
     <select value="${Dev.getCurrentUser(schema).UUID}" id="currentUser">
@@ -33,33 +33,26 @@ setupDevEnvInit = function(){
         <input class="input" type="hidden" id="SolutionStartupFolder" value="${Dev.getCurrentUser(schema).EnvironmentVariables.SolutionStartupFolder}" />
         </div>
     </div>
-    <button>Submit</button></div>
-    <style>input:focus,select:focus { 
-    outline: none;
-    border-color: #5c5edc;
-    box-shadow: 0 0 10px #5c5edc;
-}</style>`;
-    $(`.content`).html(`<div id="createUser" class="products"><div class=\"contentpartial\">${html}</div></div>`);
+    <button>Submit</button></div>`;
+    $(`.content`).html(`<div id="setupDevEnv" class="products"><div class=\"contentpartial\">${html}</div></div>`);
 
     
-$(`.content`).off('click','#createUser *');
 
 
 
-$(`.content`).off('change','#currentUser,[type="file"]');
-$(`.content`).on('change','#currentUser',function(e){
+$('#currentUser').on('change',function(e){
     //schema.Dev.Users
     schema=Dev.setCurrentUser(schema,$('#currentUser').val());
     saveSchema();
     setupDevEnvInit();
 });
 
-$(`.content`).on('change','[type="file"]',function(e){
+$('[type="file"]').on('change',function(e){
     if(e.target.files.length>0){
         $(this).siblings('input[type=hidden]').val(e.target.files[0].path);
     }
 });
-$(`.content`).on('click','#createUser button',function(e){
+$('#createUser button').on('click',function(e){
     //schema.Dev.Users
     schema=Dev.editUserName(schema,$('#name').val());
     schema=Dev.setConnectionString(schema,$('#connectionstring').val());
@@ -69,9 +62,5 @@ $(`.content`).on('click','#createUser button',function(e){
     saveSchema();
     setupDevEnvInit();
 });
-/*
-$(`.content`).on('change','#connectionstringlog',function(e){
-    Stack(schema).database.checkConnection($(this).val())
-});*/
 
 }

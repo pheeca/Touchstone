@@ -90,6 +90,8 @@ function loadDummyData(ev, itemName) {
 		let item = res.filter(r=>r.Id==$(ev.target).data('itemid'))[0];
 		if(item.loader){
 			item.loader(ev);
+		}else{
+			gridWrapper.innerHTML = '<ul class="products"><div id="createUser" class="products"><div class="contentpartial">Under Construction</div></div><ul>';
 		}
 		//gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
 	}, 700);

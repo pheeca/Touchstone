@@ -46,7 +46,10 @@ let routation = [{
     },{
         name:"Modelling",
         submenu:[{
-            name:"DB Entities"
+            name:"DB Entities",
+            loader:function(){
+                setupdbEntities();
+            }
         },{
             name:"Stored Proc"
         }]

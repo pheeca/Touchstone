@@ -241,7 +241,7 @@ a:hover {
 	text-align: center;
 }
 
-.product,.contentpartial {
+.product,.contentpartial,.contentsplit {
 	display: inline-block;
 	width: 200px;
 	min-height: 200px;
@@ -252,6 +252,23 @@ a:hover {
 }
 .contentpartial {
 	width: 100%;
+}
+.contentsplit-3 {
+	width: 29%;
+    margin: 0.5%;
+}
+.contentsplit-5 {
+	width: 49%;
+    margin: 0.5%;
+}
+.contentsplit-7 {
+	width: 69%;
+    margin: 0.5%;
+}
+
+.contentsplit-2 {
+	width: 19%;
+    margin: 0.5%;
 }
 .product .foodicon {
 	font-size: 4em;
@@ -318,4 +335,10 @@ img{
     text-align: center;
     width: 300px;
     color: #6d6e73;
+}
+
+input:focus,select:focus { 
+    outline: none;
+    border-color: #5c5edc;
+    box-shadow: 0 0 10px #5c5edc;
 }

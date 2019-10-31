@@ -28,3 +28,9 @@ function editableTable(array){
     });
     return `<table style="width: 100%;"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table>`;
 }
+
+function addButton(text,array,callback){
+    let thead ='';
+    let tbody ='';
+    return `<button><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table>`;
+}
