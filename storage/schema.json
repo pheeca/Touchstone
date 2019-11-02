@@ -691,7 +691,7 @@
                 "Module": "e01c477d-2611-4774-8550-077b4f59616a",
                 "IsVirtual": false,
                 "CustomSQL": null,
-                "Name": "testEntity",
+                "Name": "tt",
                 "Notes": null,
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
@@ -723,9 +723,9 @@
                         "UUID": "d92edf8f-0857-46e8-8741-ef8e79a9341d",
                         "IsComputed": false,
                         "ComputedSQL": null,
-                        "Name": "tt",
+                        "Name": "\n        atr",
                         "OverwriteDBName": null,
-                        "Type": "int",
+                        "Type": "string",
                         "RefType": null,
                         "RefTypeValue": {
                             "BindingKey": null,
@@ -737,7 +737,7 @@
                             "IsUnique": false,
                             "IsPrimary": false
                         },
-                        "SQLType": "int",
+                        "SQLType": "nvarchar(100)",
                         "DefaultValue": null
                     }
                 ]
@@ -758,286 +758,6 @@
                         "IsComputed": false,
                         "ComputedSQL": null,
                         "Name": "retId",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "844057b2-889a-4f4a-b26c-6c94afc77785",
-                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "e2027862-c8c8-428e-8bb7-04510e92daf0",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "3e5a7131-17c0-413c-be8c-56da5d858560",
-                "Module": "e01c477d-2611-4774-8550-077b4f59616a",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "2e27b8b8-22d8-4eb3-854c-4c89f6c7fcdb",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "657fbf94-ca5b-4332-8ab5-2b7b45649b61",
-                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "670dfac2-1dd8-4671-aaac-150f9330f76e",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "6f552da5-1d74-4d2e-88a7-15759d41e640",
-                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "c0855acd-72b5-42a3-8a37-aa2beace10c2",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "2ee1b37e-e607-487f-9e95-e420a159e43f",
-                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "44ed1d6a-f075-49c2-830d-8ae257241ee0",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "de335fd7-61c7-49d6-831f-232d486b6e1c",
-                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "4c293df2-56c7-48ff-a2e2-38e03939b170",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "Id",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "06b8d92a-80ed-4e3e-9105-4e7ec3aea388",
-                "Module": "e01c477d-2611-4774-8550-077b4f59616a",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "teeeer",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "da301b93-c2cd-4651-822e-9cccaedb5e24",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "teeeerId",
-                        "OverwriteDBName": null,
-                        "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
-                        "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
-                        "Constraints": {
-                            "IsNull": false,
-                            "IsUnique": true,
-                            "IsPrimary": true
-                        },
-                        "SQLType": "int",
-                        "DefaultValue": null
-                    }
-                ]
-            },
-            {
-                "UUID": "d0fc2870-4489-4475-aeb4-0e586c31f527",
-                "Module": "e01c477d-2611-4774-8550-077b4f59616a",
-                "IsVirtual": false,
-                "CustomSQL": null,
-                "Name": "eeet",
-                "Notes": null,
-                "IsEnumeratedType": false,
-                "EnumeratedValues": {},
-                "IsAuditEnabled": null,
-                "Columns": [
-                    {
-                        "UUID": "568a9f24-2cb6-44b8-b7bb-ab971514203c",
-                        "IsComputed": false,
-                        "ComputedSQL": null,
-                        "Name": "eeetId",
                         "OverwriteDBName": null,
                         "Notes": null,
                         "Type": "int",

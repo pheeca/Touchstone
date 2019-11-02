@@ -4,6 +4,9 @@ var csharpParser = require('./csharpParser');
 
 module.exports = function (schema) {
     let _schema = schema;
+
+    this.Parser=csharpParser;
+
     this.GenerateEntities = function () {
         let transformedSchema =this.transformSchema();
         for (let i = 0; i < transformedSchema.Model.Modules.length; i++) {

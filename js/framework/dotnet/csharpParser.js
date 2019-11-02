@@ -69,6 +69,30 @@ module.exports = {
             Columns: this.getFilePropertiesAsColumns(modelFile,modelName)
         };
         return model;
-    },
+    },getBackendDataTypes(schema){
+        let defaultSQLTypes = {
+            int:["int","tinyint"],
+            decimal:["decimal(18,2)","decimal(18,4)","float"],
+            string:["nvarchar(100)","nvarchar(10)","nvarchar(20)","nvarchar(50)","nvarchar(500)","nvarchar(max)","text"],
+            bool:["bit"],
+            file:["nvarchar(500)"],
+            image:["nvarchar(500)"],
+            date:["datetime"],
+            datetime:["datetime"]
+        }
+        if(schema){
+            schema.Model.DBModels.forEach((m)=>{
+                defaultSQLTypes[m.UUID] = ["int"];
+            })
+        }
+        return defaultSQLTypes;
+    },getBackendToDBTypes(type,schema){
+        let ctypes = this.getBackendDataTypes(schema);
+        let sqlType = ctypes[type]||[];
+        if(sqlType.length==0){
+            sqlType = ["int"]
+        }
+        return sqlType;
+    }
 
 }

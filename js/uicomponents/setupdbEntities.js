@@ -138,7 +138,7 @@ function getDbModelDesignerPanel() {
   let html = '';
   if (DBModel) {
     html += `<h3>${DBModel.Name}</h3><button>+ add column</button>`;
-    html += `<ul>${DBModel.Columns.map(c => `<li data-column="${c.UUID}">${c.Name}</li>`).reduce((a, b) => a + b, '')}</ul>`;
+    html += `<ul>${DBModel.Columns.map(c => `<li data-column="${c.UUID}">${c.Name}  -  ${c.Type}</li>`).reduce((a, b) => a + b, '')}</ul>`;
     html += `<div id="dialogColumn" title="Basic dialog" style="display:none;">
   <p></p>
   <input  id="columnname" />
@@ -247,14 +247,43 @@ function getModelProPanel(DBModel) {
 function getModelColumnProPanel(col) {
   let thead = '';
   let tbody = '';
-  let defaultValues = { IsVirtual: false, IsEnumeratedType: false, IsAuditEnabled: schema.options.AuditEnabled };
   array = Object.keys(col).map(m => ({ label: m, value: col[m] }));
   if (array.length > 0) {
     thead += `<th>Property</th><th></th>`;
-    ['Name', 'Notes','Type','ComputedSQL', 'IsComputed', 'IsAuditEnabled', 'IsVirtual', 'SQLType', 'CustomSQL'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+    ['Name', 'Notes','ComputedSQL'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
       .forEach(obj => {
-        tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e => `<td ${e !== 'label' && obj['label'].indexOf('Is')!=0 ? 'contenteditable="true"' : ''} >
-        ${(  (obj[e]) )}
+        tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e => `<td ${e !== 'label'? 'contenteditable="true"' : ''} >
+        ${(  (obj[e])||'' )}
+        </td>`).reduce((a, b) => a + b, '')}</tr>`;
+      });
+      let types=Stack(schema).backEnd.Parser.getBackendDataTypes(schema);
+      
+      ['Type','SQLType'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      .forEach(obj => {
+        let options=obj.label=='Type'? Object.keys(types)
+        .map(e=>({ key:e,
+          value:(schema.Model.DBModels.filter(m=>m.UUID==e)[0]||{}).Name||e}))
+          :types[col.Type]
+          .map(e=>({ key:e, value:e}));
+        tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0])
+          .map(e => `<td ${e !== 'label'? 'contenteditable="true"' : ''} >
+        ${(  e == 'label'?(obj[e]):`
+        <select data-key='${obj.label}'>
+        ${options.map(e=>`<option value="${e.key}" ${obj.value==e.value?'selected=selected':''}>${e.value}</option>`).reduce((a,b)=>a+b,'')}</select>
+        ` )}
+        </td>`).reduce((a, b) => a + b, '')}</tr>`;
+      });
+      ['IsComputed'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      .forEach(obj => {
+        tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e => `<td>
+        ${e=='label'?obj[e]:`<input type="checkbox" ${(  (obj[e])?'checked=checked':'' )} />`}
+        </td>`).reduce((a, b) => a + b, '')}</tr>`;
+      });
+      array = Object.keys(col.Constraints).map(m => ({ label: m, value: col.Constraints[m] }));
+      ['IsNull', 'IsUnique','IsPrimary'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      .forEach(obj => {
+        tbody += `<tr data-constraint='constraint' data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e => `<td>
+        ${e=='label'?obj[e]:`<input type="checkbox" ${(  (obj[e])?'checked=checked':'' )} />`}
         </td>`).reduce((a, b) => a + b, '')}</tr>`;
       });
   }
@@ -272,28 +301,55 @@ function getModelColumnProPanel(col) {
       info[key] = $(this).text();
       $(this).parent().data('info', info);
       $(this).data("initialText", $(this).html());
+      PropChanged();
     }
   });
-
+  $(`.content`).off('change', '#modelcolumnpanel [type=checkbox]');
   $('.content').on('change', '#modelcolumnpanel [type=checkbox]', function () {
     // ...if content is different...
+    
     let info =$(this).parent().parent().data('info');
     info.value=$(this).is(':checked');
     $(this).parent().parent().data('info',info);
+    PropChanged();
+  });
+  $(`.content`).off('change', '#modelcolumnpanel select');
+  $('.content').on('change', '#modelcolumnpanel select', function () {
+    // ...if content is different...
+    let info =$(this).parent().parent().data('info');
+    info.value=$(this).val();
+    $(this).parent().parent().data('info',info);
+    if($(this).data('key')=='Type'){
+      let _t=Stack(schema).backEnd.Parser.getBackendToDBTypes($(this).val(),schema);
+      $('[data-key=SQLType]').html(_t.map(e=>`<option value="${e}">${e}</option>`).reduce((a,b)=>a+b,''));
+      $('[data-key=SQLType]').val(_t[0]).trigger('change');
+    }else{
+      PropChanged();
+    }
   });
   $('.content').off('click', '#modelcolumnpanel button');
-  $('.content').on('click', '#modelcolumnpanel button', function () {
-    // ...if content is different...
-    let changedProps =$('#modelcolumnpanel table tbody tr').toArray().map(e=>$(e).data('info'));
-    for (var i = 0; i < schema.Model.DBModels.length; i++) {
-      if(schema.Model.DBModels[i].UUID==screen.setupdbEntity){
-        for(var j=0;j<changedProps.length;j++){
-          schema.Model.DBModels[i][changedProps[j].label]=changedProps[j].value;
+  $('.content').on('click', '#modelcolumnpanel button', PropChanged);
+
+  return `<div id="modelcolumnpanel" ><table style="width: 100%;"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+
+}
+function PropChanged() {
+  // ...if content is different...
+  let changedProps =$('#modelcolumnpanel table tbody tr').toArray().map(e=>$(e).data('info'));
+  for (var i = 0; i < schema.Model.DBModels.length; i++) {
+    if(schema.Model.DBModels[i].UUID==screen.setupdbEntity){
+      for(var k=0;k<schema.Model.DBModels[i].Columns.length;k++){
+        if(screen.Column==schema.Model.DBModels[i].Columns[k].UUID){
+          for(var j=0;j<changedProps.length;j++){
+            if(["IsNull","IsUnique","IsPrimary"].indexOf(changedProps[j].label)==-1){
+              schema.Model.DBModels[i].Columns[k][changedProps[j].label]=changedProps[j].value; 
+            }else{
+              schema.Model.DBModels[i].Columns[k].Constraints[changedProps[j].label]=changedProps[j].value; 
+            }
+          }
         }
       }
     }
-  });
-
-  return `<div id="modelcolumnpanel" ><table style="width: 100%;"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody><button>Update</button></table></div>`;
-
+  }
+  saveSchema();
 }
