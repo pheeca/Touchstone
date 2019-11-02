@@ -332,7 +332,7 @@
                             "FilterColumns": {}
                         },
                         "Constraints": {
-                            "IsNull": true,
+                            "IsNull": false,
                             "IsUnique": false,
                             "IsPrimary": true
                         },
@@ -704,8 +704,12 @@
                         "Name": "testEntityId",
                         "OverwriteDBName": null,
                         "Notes": null,
-                        "Type": "int",
-                        "RefType": null,
+                        "Type": "decimal",
+                        "RefType": {
+                            "BindingKey": null,
+                            "BindingDisplayValue": null,
+                            "FilterColumns": {}
+                        },
                         "RefTypeValue": {
                             "BindingKey": null,
                             "BindingDisplayValue": null,
@@ -716,7 +720,7 @@
                             "IsUnique": true,
                             "IsPrimary": true
                         },
-                        "SQLType": "int",
+                        "SQLType": "decimal(18,2)",
                         "DefaultValue": null
                     },
                     {
@@ -725,19 +729,21 @@
                         "ComputedSQL": null,
                         "Name": "\n        atr",
                         "OverwriteDBName": null,
-                        "Type": "string",
-                        "RefType": null,
+                        "Type": "Model",
+                        "RefType": "0b26322c-24fa-48a7-a665-8e399a1decef",
                         "RefTypeValue": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
+                            "BindingKey": "2b000394-6942-4403-86c8-4e17b1e1e68b",
+                            "BindingDisplayValue": "3864200f-d2b0-432b-ab6e-93dde2708e00",
+                            "FilterColumns": {
+                                "d92edf8f-0857-46e8-8741-ef8e79a9341d": "2b000394-6942-4403-86c8-4e17b1e1e68b"
+                            }
                         },
                         "Constraints": {
                             "IsNull": false,
                             "IsUnique": false,
                             "IsPrimary": false
                         },
-                        "SQLType": "nvarchar(100)",
+                        "SQLType": "int",
                         "DefaultValue": null
                     }
                 ]

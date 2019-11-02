@@ -216,7 +216,7 @@ function getModelProPanel(DBModel) {
       // ... do something.
       let key = Object.keys($(this).parent().data('info')).filter((e, i) => i == $(this).index())[0];
       let info = $(this).parent().data('info');
-      info[key] = $(this).text();
+      info[key] = $(this).text().trim();
       $(this).parent().data('info', info);
       $(this).data("initialText", $(this).html());
     }
@@ -256,20 +256,37 @@ function getModelColumnProPanel(col) {
         ${(  (obj[e])||'' )}
         </td>`).reduce((a, b) => a + b, '')}</tr>`;
       });
-      let types=Stack(schema).backEnd.Parser.getBackendDataTypes(schema);
-      
-      ['Type','SQLType'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      ['RefType', 'RefTypeValue'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
       .forEach(obj => {
-        let options=obj.label=='Type'? Object.keys(types)
-        .map(e=>({ key:e,
-          value:(schema.Model.DBModels.filter(m=>m.UUID==e)[0]||{}).Name||e}))
-          :types[col.Type]
+        tbody += `<tr data-ref="${obj.label}" style="display:none;" data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e => `<td ${e !== 'label'? 'contenteditable="true"' : ''} >
+        ${(  (obj[e])||'' )}
+        </td>`).reduce((a, b) => a + b, '')}</tr>`;
+      });
+      let types=Stack(schema).backEnd.Parser.getBackendDataTypes(schema);
+      ['Type'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      .forEach(obj => {
+        let options= Object.keys(types)
+        .map(e=>({ key:((obj.value=='Model'&&schema.Model.DBModels.filter(m=>m.UUID==e).length>0)?'Model':e),
+          value:(schema.Model.DBModels.filter(m=>m.UUID==e)[0]||{}).Name||e}));
+        tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0])
+          .map(e => `<td  >
+        ${(  e == 'label'?(obj[e]):`
+        <select data-key='${obj.label}'>
+        ${options.map(e=>`<option value="${e.key}" ${((obj.value=='Model'?
+        schema.Model.DBModels.filter(f=>f.UUID==col.RefType)[0].Name
+        :obj.value)==e.value)?'selected=selected':''}>${e.value}</option>`).reduce((a,b)=>a+b,'')}</select>
+        ` )}
+        </td>`).reduce((a, b) => a + b, '')}</tr>`;
+      });
+      ['SQLType'].map(e => array.filter(f => f.label == e)[0]).filter(r=>r)
+      .forEach(obj => {
+        let options=(col.Type=='Model'?["int"]:types[col.Type])
           .map(e=>({ key:e, value:e}));
         tbody += `<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0])
           .map(e => `<td ${e !== 'label'? 'contenteditable="true"' : ''} >
         ${(  e == 'label'?(obj[e]):`
         <select data-key='${obj.label}'>
-        ${options.map(e=>`<option value="${e.key}" ${obj.value==e.value?'selected=selected':''}>${e.value}</option>`).reduce((a,b)=>a+b,'')}</select>
+        ${options.map(e=>`<option value="${e.key}" ${((obj.value=='Model'?col.SQLType:obj.value)==e.value)?'selected=selected':''}>${e.value}</option>`).reduce((a,b)=>a+b,'')}</select>
         ` )}
         </td>`).reduce((a, b) => a + b, '')}</tr>`;
       });
@@ -298,7 +315,7 @@ function getModelColumnProPanel(col) {
       // ... do something.
       let key = Object.keys($(this).parent().data('info')).filter((e, i) => i == $(this).index())[0];
       let info = $(this).parent().data('info');
-      info[key] = $(this).text();
+      info[key] = $(this).text().trim();
       $(this).parent().data('info', info);
       $(this).data("initialText", $(this).html());
       PropChanged();
@@ -313,16 +330,36 @@ function getModelColumnProPanel(col) {
     $(this).parent().parent().data('info',info);
     PropChanged();
   });
-  $(`.content`).off('change', '#modelcolumnpanel select');
-  $('.content').on('change', '#modelcolumnpanel select', function () {
+  $(`.content`).off('change', '#modelcolumnpanel select:not(#displayfield)');
+  $('.content').on('change', '#modelcolumnpanel select:not(#displayfield)', function () {
     // ...if content is different...
     let info =$(this).parent().parent().data('info');
     info.value=$(this).val();
     $(this).parent().parent().data('info',info);
     if($(this).data('key')=='Type'){
+      if(info.value=='Model'){
+        let info2=$('[data-ref=RefType]').data('info');
+        let _ref=schema.Model.DBModels.filter(m=>m.Name==$(this).find('option').toArray().filter(f=>$(f).is(':selected'))[0].text)[0];
+        info2.value=_ref.UUID;
+        $('[data-ref=RefType]').data('info',info2);
+        info2 =$('[data-ref=RefTypeValue]').data('info');
+        info2.value.BindingKey=_ref.Columns.filter(e=>e.Constraints.IsPrimary)[0].UUID;
+        info2.value.BindingDisplayValue=_ref.Columns.filter(e=>e.Constraints.IsPrimary)[0].UUID;
+        info2.value.FilterColumns={};
+        info2.value.FilterColumns[screen.Column]=info2.value.BindingKey;
+        $('[data-ref=RefTypeValue]').data('info',info2);
+      }else{
+        $('[data-ref=RefType]').data('info',{ label:"RefType",value:null });
+        $('[data-ref=RefTypeValue]').data('info',{ label:"RefType",value:{
+          BindingKey:null,
+          BindingDisplayValue:null,
+          FilterColumns:{}
+        }});
+      }
       let _t=Stack(schema).backEnd.Parser.getBackendToDBTypes($(this).val(),schema);
       $('[data-key=SQLType]').html(_t.map(e=>`<option value="${e}">${e}</option>`).reduce((a,b)=>a+b,''));
       $('[data-key=SQLType]').val(_t[0]).trigger('change');
+      setupdbEntities();
     }else{
       PropChanged();
     }
@@ -330,7 +367,20 @@ function getModelColumnProPanel(col) {
   $('.content').off('click', '#modelcolumnpanel button');
   $('.content').on('click', '#modelcolumnpanel button', PropChanged);
 
-  return `<div id="modelcolumnpanel" ><table style="width: 100%;"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+  
+  $('.content').off('change', '#displayfield');
+  $('.content').on('change', '#displayfield', function(){
+    let info2 =$('[data-ref=RefTypeValue]').data('info');
+    info2.value.BindingDisplayValue=$(this).val();
+    $('[data-ref=RefTypeValue]').data('info',info2);
+    PropChanged();
+  });
+  let extraComponent = ''
+  if(col.Type=='Model'){
+    extraComponent +=`Display Field:<select id="displayfield">${schema.Model.DBModels.filter(f=>f.UUID==col.RefType)[0].Columns.map(e=>`<option value="${e.UUID}" ${e.UUID==col.RefTypeValue.BindingDisplayValue?'selected=selected':''}>${e.Name}</option>`).reduce((a,b)=>a+b,'')}</select>`;
+  }
+  
+  return `<div id="modelcolumnpanel" ><table style="width: 100%;"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table>${extraComponent}</div>`;
 
 }
 function PropChanged() {
@@ -341,10 +391,10 @@ function PropChanged() {
       for(var k=0;k<schema.Model.DBModels[i].Columns.length;k++){
         if(screen.Column==schema.Model.DBModels[i].Columns[k].UUID){
           for(var j=0;j<changedProps.length;j++){
-            if(["IsNull","IsUnique","IsPrimary"].indexOf(changedProps[j].label)==-1){
-              schema.Model.DBModels[i].Columns[k][changedProps[j].label]=changedProps[j].value; 
-            }else{
+            if(["IsNull","IsUnique","IsPrimary"].indexOf(changedProps[j].label)>-1){
               schema.Model.DBModels[i].Columns[k].Constraints[changedProps[j].label]=changedProps[j].value; 
+            }else{
+              schema.Model.DBModels[i].Columns[k][changedProps[j].label]=changedProps[j].value; 
             }
           }
         }
