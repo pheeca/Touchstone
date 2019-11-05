@@ -52,6 +52,12 @@ $('[type="file"]').on('change',function(e){
         $(this).siblings('input[type=hidden]').val(e.target.files[0].path);
     }
 });
+
+$('#connectionstring').on('change',function(e){
+    Stack(schema).database.Test(setInterval);
+});
+
+
 $('#createUser button').on('click',function(e){
     //schema.Dev.Users
     schema=Dev.editUserName(schema,$('#name').val());

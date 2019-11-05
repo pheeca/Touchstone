@@ -51,6 +51,16 @@ let routation = [{
                 setupdbEntities();
             }
         },{
+            name:"DB Entities Data",
+            loader:function(){
+                setupdbEntitiesData();
+            }
+        },{
+            name:"URM Configuration",
+            loader:function(){
+                setupURMConfiguration();
+            }
+        },{
             name:"Stored Proc"
         }]
     },{

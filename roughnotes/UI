@@ -1,0 +1,12 @@
+data-modalhorizontal
+data-url
+data-heading
+data-script
+button text
+
+
+cssClass??
+
+
+
+data-submit="true" -> form[data-url](POST) -> data-url,data-script,data-rurl,data-display,data-modalhorizontal,data-callback

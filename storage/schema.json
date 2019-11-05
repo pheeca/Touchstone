@@ -939,8 +939,15 @@
                 "UUID": "e01c477d-2611-4774-8550-077b4f59616a",
                 "Name": "Test2"
             }
-        ]
-    },
+        ],
+		"URM":{
+			"User":null,
+			"Role":null,
+			"Page":null,
+			"Menu":null,
+			"PagePermission":null
+		}
+	},
     "options": {
         "ProjectName": "SSpot",
         "MultiTenancy": {

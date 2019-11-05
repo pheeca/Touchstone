@@ -4,8 +4,12 @@ const dev = require('./js/framework/main/dev');
 const stackFactory = require('./js/framework/main/stackFactory');
 const Module =  require('./js/framework/modelling/module');
 const Entity =  require('./js/framework/modelling/entity');
+const setimmediate = require("setimmediate");
 
 // All of the Node.js APIs are available in the preload process.
+debugger
+global.setimmediate = setimmediate;
+
 // It has the same sandbox as a Chrome extension.
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
@@ -36,3 +40,9 @@ window.addEventListener('saveschema', function (e) {
  window.screen = {};
 
  process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
+
+ var _setImmediate = setImmediate;
+ console.log(_setImmediate);
+process.once('loaded', function() {
+  global.setImmediate = _setImmediate;
+});
