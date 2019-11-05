@@ -940,14 +940,14 @@
                 "Name": "Test2"
             }
         ],
-		"URM":{
-			"User":null,
-			"Role":null,
-			"Page":null,
-			"Menu":null,
-			"PagePermission":null
-		}
-	},
+        "URM": {
+            "User": null,
+            "Role": null,
+            "Page": null,
+            "Menu": null,
+            "PagePermission": null
+        }
+    },
     "options": {
         "ProjectName": "SSpot",
         "MultiTenancy": {
@@ -973,7 +973,7 @@
                 "UUID": "667dfa53-285e-42a0-b454-54f195276ddc",
                 "Name": "Faheem",
                 "EnvironmentVariables": {
-                    "ConnectionString": "Server=PHEECA\\SQLEXPRESS2017;Database=SSpot;Integrated Security=SSPI",
+                    "ConnectionString": "Server=PHEECA\\SQLEXPRESS2017;Database=SSpot;User id=sa;password=p@ssword1;",
                     "ConnectionStringLog": "Server=PHEECA\\SQLEXPRESS2017;Database=SSpot_Log;User id=sa;password=p@ssword1",
                     "SolutionFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
                     "SolutionStartupFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"

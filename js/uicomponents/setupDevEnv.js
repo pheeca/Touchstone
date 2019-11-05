@@ -53,12 +53,18 @@ $('[type="file"]').on('change',function(e){
     }
 });
 
-$('#connectionstring').on('change',function(e){
-    Stack(schema).database.Test(setInterval);
+$('#connectionstring,#connectionstringlog').on('change',async function(e){
+    let checked = await Stack(schema).database.checkConnection($(this).val());
+    $(this).removeClass('error success');
+    if(checked.Success){
+        $(this).addClass('success')
+    }else{
+        $(this).addClass('error');
+    }
 });
 
 
-$('#createUser button').on('click',function(e){
+$('#setupDevEnv button').on('click',function(e){
     //schema.Dev.Users
     schema=Dev.editUserName(schema,$('#name').val());
     schema=Dev.setConnectionString(schema,$('#connectionstring').val());

@@ -42,7 +42,7 @@ window.addEventListener('saveschema', function (e) {
  process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
  var _setImmediate = setImmediate;
- console.log(_setImmediate);
+ 
 process.once('loaded', function() {
   global.setImmediate = _setImmediate;
 });

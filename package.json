@@ -4,7 +4,9 @@
   "description": "Touchstone: Code Generation Framework",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild": "electron-rebuild -p -t msnodesqlv8",
+    "rename": "node -e \"require('fs').rename('dist/config/conf.dev.json', 'dist/config/conf.json', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\""
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [
@@ -21,7 +23,7 @@
     "electron-packager": "^14.0.6"
   },
   "dependencies": {
-    "msnodesqlv8": "0.6.9",
+    "msnodesqlv8": "^0.8.4",
     "mssql": "^6.0.0",
     "setimmediate": "^1.0.5"
   }

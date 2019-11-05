@@ -342,3 +342,14 @@ input:focus,select:focus {
     border-color: #5c5edc;
     box-shadow: 0 0 10px #5c5edc;
 }
+.success{ 
+    outline: none;
+    border-color: #5cdc71;
+    box-shadow: 0 0 10px #5cdc71;
+}
+
+.error { 
+    outline: none;
+    border-color: #f55a5a;
+    box-shadow: 0 0 10px #f55a5a;
+}
