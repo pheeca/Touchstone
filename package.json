@@ -25,6 +25,7 @@
   "dependencies": {
     "msnodesqlv8": "^0.8.4",
     "mssql": "^6.0.0",
-    "setimmediate": "^1.0.5"
+    "setimmediate": "^1.0.5",
+    "squel": "^5.13.0"
   }
 }

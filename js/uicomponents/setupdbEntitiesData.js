@@ -1,16 +1,13 @@
 
-setupdbEntitiesData = function () {
+setupdbEntitiesData =async function () {
   let panel1 = `<div class="contentsplit contentsplit-2 slimScroll">
-	${getDbModelListPanel()}
+	${getDbModelListDataPanel()}
     </div>`;
-  let panel2 = `<div class="contentsplit contentsplit-3 slimScroll">
-	${getDbModelDesignerPanel()}
+  let panel2 = `<div class="contentsplit contentsplit-7 slimScroll">
+	${await getDbModelDesignerDataPanel()}
     </div>`;
 
-  let panel3 = `<div class="contentsplit contentsplit-5 slimScroll">
-	${getDbModelDesignerPanel2()}
-    </div>`;
-  $(`.content`).html(`<div id="dbentities" class="products" style="max-height: 500px; overflow-y: hidden;">${panel1 + panel2 + panel3}</div>`);
+  $(`.content`).html(`<div id="dbentitiesdata" class="products" style="max-height: 500px; overflow-y: hidden;">${panel1 + panel2}</div>`);
   var element = document.querySelectorAll('.slimScroll');
   var one = [new slimScroll(element[0], {
     'wrapperClass': 'scroll-wrapper unselectable mac',
@@ -24,15 +21,17 @@ setupdbEntitiesData = function () {
     'scrollBarContainerSpecialClass': 'animate',
     'scrollBarClass': 'scroll',
     'keepFocus': true
-  }), new slimScroll(element[2], {
+  })
+  /*, new slimScroll(element[2], {
     'wrapperClass': 'scroll-wrapper unselectable mac',
     'scrollBarContainerClass': 'scrollBarContainer',
     'scrollBarContainerSpecialClass': 'animate',
     'scrollBarClass': 'scroll',
     'keepFocus': true
-  })];
+  })*/
+];
 
-  $("#dbentities").resizable({
+  $("#dbentitiesdata").resizable({
     handles: 's',
     stop: function (event, ui) {
       $(this).css("width", '');
@@ -40,7 +39,7 @@ setupdbEntitiesData = function () {
   });
 }
 
-function getDbModelListPanel() {
+function getDbModelListDataPanel() {
   let array = schema.Model.Modules.map(_m => ({
     Name: _m.Name,
     Models: schema.Model.DBModels.filter(e => _m.UUID == e.Module).filter(f => f.Name.indexOf($('#filter').val() || '') > -1).map(e => ({
@@ -60,19 +59,19 @@ function getDbModelListPanel() {
             </li>`;
     });
   }
-  $(`.content`).off('click', `#dbentities #myUL .caret`);
-  $(`.content`).on('click', `#dbentities #myUL .caret`, function () {
+  $(`.content`).off('click', `#dbentitiesdata #myUL .caret`);
+  $(`.content`).on('click', `#dbentitiesdata #myUL .caret`, function () {
     this.parentElement.querySelector(".nested").classList.toggle("active");
     this.classList.toggle("caret-down");
   });
-  $(`.content`).on('click', `#dbentities #myUL .nested li`, function () {
+  $(`.content`).on('click', `#dbentitiesdata #myUL .nested li`, function () {
     screen.setupdbEntity = $(this).data('info');
     screen.Column = null;
-    setupdbEntities();
-    $(`#dbentities #myUL .nested`).toArray().filter(r => JSON.stringify($(r).data('info')) == JSON.stringify($(this).parent().data('info')))[0].classList.toggle("active");
+    setupdbEntitiesData();
+    $(`#dbentitiesdata #myUL .nested`).toArray().filter(r => JSON.stringify($(r).data('info')) == JSON.stringify($(this).parent().data('info')))[0].classList.toggle("active");
   });
-  $(`.content`).off('change', `#dbentities #filter`)
-  $(`.content`).on('change', `#dbentities #filter`, setupdbEntities);
+  $(`.content`).off('change', `#dbentitiesdata #filter`)
+  $(`.content`).on('change', `#dbentitiesdata #filter`, setupdbEntitiesData);
   html += `<div id="dialogEntity" title="Add New Entity" style="display:none;">
     <p></p>
     <input  id="entityname" />
@@ -80,16 +79,16 @@ function getDbModelListPanel() {
     </select>
     <button>Create</button>
   </div>`;
-  $(`.content`).off('click', '#dbentities #myUL *');
+  $(`.content`).off('click', '#dbentitiesdata #myUL *');
 
-  $(`.content`).on('click', '#dbentities #myUL button', function (e) {
+  $(`.content`).on('click', '#dbentitiesdata #myUL button', function (e) {
     $("#dialogEntity").dialog();
     $("#dialogEntity button").on('click', function () {
       schema = Entity.createEntity(schema, $('#entityname').val(), $('#entitymodule').val());
       saveSchema();
       $('[aria-describedby="dialogEntity"]').hide();
       $('#entityname').val('');
-      setupdbEntities();
+      setupdbEntitiesData();
     });
   });
   return `<ul style="width: 100%;text-align: left;" id="myUL">${html}</ul><style>ul, #myUL {
@@ -133,10 +132,16 @@ function getDbModelListPanel() {
 
 
 
-function getDbModelDesignerPanel() {
+async function getDbModelDesignerDataPanel() {
   let DBModel = schema.Model.DBModels.filter(e => e.UUID == screen.setupdbEntity)[0];
   let html = '';
   if (DBModel) {
+    let query = Stack(schema).database.getSchemaQueryFromModel(DBModel,schema,30);
+    if(query.Success){
+      console.log(query.Message);
+      let data = await Stack(schema).database.getDataFrom(schema,query.Message);
+      console.log(data);
+    }
     html += `<h3>${DBModel.Name}</h3><button>+ add column</button>`;
     html += `<ul>${DBModel.Columns.map(c => `<li data-column="${c.UUID}">${c.Name}  -  ${c.Type}</li>`).reduce((a, b) => a + b, '')}</ul>`;
     html += `<div id="dialogColumn" title="Basic dialog" style="display:none;">
@@ -147,7 +152,7 @@ function getDbModelDesignerPanel() {
     $(`.content`).off('click', '#dp h3');
     $(`.content`).on('click', '#dp h3', function (e) {
       screen.Column=null;
-      setupdbEntities();
+      setupdbEntitiesData();
     });
 
     $(`.content`).off('click', '#dp *');
@@ -163,18 +168,18 @@ function getDbModelDesignerPanel() {
         saveSchema();
         $('[aria-describedby="dialogColumn"]').hide();
         $('#columnname').val('');
-        setupdbEntities();
+        setupdbEntitiesData();
       });
     });
     $(`.content`).on('click', '#dp ul li[data-column]', function (e) {
       screen.Column = $(this).data('column');
-      setupdbEntities();
+      setupdbEntitiesData();
     });
   }
   return `<div id="dp">${html}</div>`;
 }
 
-function getDbModelDesignerPanel2() {
+function getDbModelDesignerDataPanel2() {
   let DBModel = schema.Model.DBModels.filter(e => e.UUID == screen.setupdbEntity)[0];
   let col = null;
   let html = '';
@@ -183,13 +188,13 @@ function getDbModelDesignerPanel2() {
       col = DBModel.Columns.filter(c => c.UUID == screen.Column)[0];
     }
     html += `<h3>${DBModel.Name + (col ? ' - ' + col.Name : '')}</h3>`;
-    html += `<div>${col ? getModelColumnProPanel(col) : getModelProPanel(DBModel)}</div>`;
+    html += `<div>${col ? getModelColumnProDataPanel(col) : getModelProDataPanel(DBModel)}</div>`;
     //  html+=`${editableTable(DBModel.Columns)}`;
   }
   return `<div>${html}</div>`;
 }
 
-function getModelProPanel(DBModel) {
+function getModelProDataPanel(DBModel) {
   let thead = '';
   let tbody = '';
   let defaultValues = { IsVirtual: false, IsEnumeratedType: false, IsAuditEnabled: schema.options.AuditEnabled };
@@ -359,7 +364,7 @@ function getModelColumnProPanel(col) {
       let _t=Stack(schema).backEnd.Parser.getBackendToDBTypes($(this).val(),schema);
       $('[data-key=SQLType]').html(_t.map(e=>`<option value="${e}">${e}</option>`).reduce((a,b)=>a+b,''));
       $('[data-key=SQLType]').val(_t[0]).trigger('change');
-      setupdbEntities();
+      setupdbEntitiesData();
     }else{
       PropChanged();
     }

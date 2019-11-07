@@ -35,6 +35,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "2b000394-6942-4403-86c8-4e17b1e1e68b",
@@ -92,6 +93,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "7dc6e899-02e4-4a02-bc40-a109e1fd1062",
@@ -259,6 +261,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "0bda5457-a780-4525-b4e1-055b50c273cd",
@@ -316,6 +319,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "bfc91996-aa86-4b92-bce6-07a1b5d0101a",
@@ -612,11 +616,12 @@
                 "Module": "f653fab1-34ad-4ce1-ab16-fc02a2d32eb7",
                 "IsVirtual": false,
                 "CustomSQL": null,
-                "Name": "User",
+                "Name": "AppUser",
                 "Notes": null,
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "820cdcd5-b24f-40f9-9155-145aff2aca22",
@@ -696,6 +701,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "ef72b1e7-392c-49be-8ef7-df920a18c2f2",
@@ -758,6 +764,7 @@
                 "IsEnumeratedType": false,
                 "EnumeratedValues": {},
                 "IsAuditEnabled": null,
+                "IsTenantEnabled": null,
                 "Columns": [
                     {
                         "UUID": "936319d9-39f5-4423-af62-7e75951e8572",
