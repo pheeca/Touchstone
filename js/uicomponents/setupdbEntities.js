@@ -65,6 +65,7 @@ function getDbModelListPanel() {
     this.parentElement.querySelector(".nested").classList.toggle("active");
     this.classList.toggle("caret-down");
   });
+  $(`.content`).off('click', `#dbentities #myUL .nested li`)
   $(`.content`).on('click', `#dbentities #myUL .nested li`, function () {
     screen.setupdbEntity = $(this).data('info');
     screen.Column = null;
@@ -166,6 +167,7 @@ function getDbModelDesignerPanel() {
         setupdbEntities();
       });
     });
+    $(`.content`).off('click', '#dp ul li[data-column]')
     $(`.content`).on('click', '#dp ul li[data-column]', function (e) {
       screen.Column = $(this).data('column');
       setupdbEntities();
@@ -209,7 +211,7 @@ function getModelProPanel(DBModel) {
   $('.content').on('focus', '#modulepanel [contenteditable=true]', function () {
     $(this).data("initialText", $(this).html());
   });
-
+  $('.content').off('blur', '#modulepanel [contenteditable=true]')
   $('.content').on('blur', '#modulepanel [contenteditable=true]', function () {
     // ...if content is different...
     if ($(this).data("initialText") !== $(this).html()) {
@@ -221,7 +223,7 @@ function getModelProPanel(DBModel) {
       $(this).data("initialText", $(this).html());
     }
   });
-
+  $('.content').off('change', '#modulepanel [type=checkbox]')
   $('.content').on('change', '#modulepanel [type=checkbox]', function () {
     // ...if content is different...
     let info =$(this).parent().parent().data('info');

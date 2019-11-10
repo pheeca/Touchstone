@@ -79,8 +79,14 @@ module.exports = function (schema) {
                     key1:mainModel+"."+model.Columns.filter(c=>c.UUID==e)[0].Name,
                     key2:refAlias+"."+refModel.Columns.filter(c=>c.UUID==Column.RefTypeValue.FilterColumns[e])[0].Name
                 })).map(e=>`${e.key1} = ${e.key2}`).join(` AND `);
-                _query= _query.field(refAlias+"."+refModel.Columns.filter(c=>c.UUID==(Column.RefTypeValue.BindingDisplayValue||Column.RefTypeValue.BindingKey))[0].Name)
-                .left_join(refModel.Name, refAlias, join);
+                let refColDisplay=refModel.Columns.filter(c=>c.UUID==(Column.RefTypeValue.BindingDisplayValue||Column.RefTypeValue.BindingKey))[0].Name;
+                if(model.Columns.map(c=>c.Name).indexOf(refColDisplay)>-1){
+                    let joinKey =Object.keys(Column.RefTypeValue.FilterColumns).map(e=>model.Columns.filter(c=>c.UUID==e)[0].Name).toLocaleString();
+                    _query= _query.field(refAlias+"."+refColDisplay,joinKey+refColDisplay);
+                }else{
+                    _query= _query.field(refAlias+"."+refColDisplay);
+                }
+                _query= _query.left_join(refModel.Name, refAlias, join);
             }
         }); 
         if(limit){

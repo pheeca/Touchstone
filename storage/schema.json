@@ -448,7 +448,7 @@
                             }
                         },
                         "Constraints": {
-                            "IsNull": false,
+                            "IsNull": true,
                             "IsUnique": false,
                             "IsPrimary": false
                         },
@@ -711,11 +711,7 @@
                         "OverwriteDBName": null,
                         "Notes": null,
                         "Type": "decimal",
-                        "RefType": {
-                            "BindingKey": null,
-                            "BindingDisplayValue": null,
-                            "FilterColumns": {}
-                        },
+                        "RefType": null,
                         "RefTypeValue": {
                             "BindingKey": null,
                             "BindingDisplayValue": null,
@@ -948,10 +944,10 @@
             }
         ],
         "URM": {
-            "User": null,
+            "User": "1df38af7-de75-4cf2-8697-0a5521180b3e",
             "Role": null,
             "Page": null,
-            "Menu": null,
+            "Menu": "37705424-d664-4a6e-86fa-474864be70dc",
             "PagePermission": null
         }
     },

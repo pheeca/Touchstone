@@ -1,4 +1,4 @@
-function editableTable(array){
+function editableTable(array,IsEditable=true){
     let thead ='';
     let tbody ='';
     if(array.length>0){
@@ -6,7 +6,7 @@ function editableTable(array){
             thead+=`<th>${obj}</th>`;
         });
         array.forEach(obj=>{
-            tbody+=`<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e=>`<td ${e!=='UUID'?'contenteditable="true"':''} >${obj[e]}</td>`).reduce((a,b)=>a+b,'')}</tr>`;
+            tbody+=`<tr data-info=${JSON.stringify(obj)}>${Object.keys(array[0]).map(e=>`<td ${e!=='UUID' && IsEditable ?'contenteditable="true"':''} >${obj[e]}</td>`).reduce((a,b)=>a+b,'')}</tr>`;
         });
     }
     $(`.content`).off('focus,blur','[contenteditable=true]');
