@@ -5,14 +5,25 @@
                 "UUID": "95ead7bb-5698-4c7f-ad3f-19161bb86347",
                 "Ref_UUID": "3a5f4149-1c09-4784-8aff-56f8c033fa2b",
                 "URL": "api/xyz/def",
-                "Type": "UI"
+                "Type": "UI",
+                "Module": "c97a8073-80f5-45e4-b0d4-5186259c703e",
+                "Name": "EndPoint 10"
             }
         ],
         "UIHandlers": {
-            "options": {},
+            "options": {
+                "Types": [
+                    "Grid",
+                    "Create",
+                    "Update"
+                ]
+            },
             "UI": [
                 {
-                    "UUID": "3a5f4149-1c09-4784-8aff-56f8c033fa2b"
+                    "UUID": "3a5f4149-1c09-4784-8aff-56f8c033fa2b",
+                    "Type": "Grid",
+                    "Entity": "9612b87a-4678-4e36-b4c4-075a20bce8c8",
+                    "Heading": ""
                 }
             ]
         },
@@ -993,5 +1004,6 @@
                 }
             }
         ]
-    }
+    },
+    "ModelInformation": {}
 }

@@ -64,7 +64,13 @@ let routation = [{
             name:"Stored Proc"
         }]
     },{
-        name:"API Generation"
+        name:"API Generation",
+        submenu:[{
+            name:"Endpoint Configuration",
+            loader:function(){
+                endpointConfiguration();
+            }
+        }]
     },{
         name:"Code Generation",
         submenu:[{
