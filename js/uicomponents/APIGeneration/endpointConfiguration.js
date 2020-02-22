@@ -218,14 +218,14 @@ function getAPIDesignerEntityPanel() {
     let html = '';
     if (EndPoint) {
         let endPointType;
-
+        debugger
         if (EndPoint.Type == 'API') {
             endPointType = schema.RequestHandler.APIHandlers.API.filter(f => f.UUID == EndPoint.Ref_UUID)[0]
 
         } else {
             endPointType = schema.RequestHandler.UIHandlers.UI.filter(f => f.UUID == EndPoint.Ref_UUID)[0]
         }
-        let _model = schema.Model.DBModels.filter(e => e.UUID == endPointType.Entity)[0];
+        let _model = endPointType?schema.Model.DBModels.filter(e => e.UUID == endPointType.Entity)[0]:null;
         if (_model) {
             html += `<h3>${_model.Name}</h3>`;
             html += `<div><select name="selectedColumns" class='fstdropdown-select' multiple="multiple">${_model.Columns.map(e=>`<option data-id="${e.UUID}">${e.Name}</option>`).reduce((a,b)=>a+b,'')}</select></div>`
@@ -260,7 +260,7 @@ function getAPIPropertiesPanel() {
         } else {
             endPointType = schema.RequestHandler.UIHandlers.UI.filter(f => f.UUID == EndPoint.Ref_UUID)[0]
         }
-        let _model = schema.Model.DBModels.filter(e => e.UUID == endPointType.Entity)[0];
+        let _model = endPointType?schema.Model.DBModels.filter(e => e.UUID == endPointType.Entity)[0]:null;
         if (_model) {
             html += `<h3>${_model.Name}</h3>`;
             let lis =_model.Columns.map(e=>`<li data-id="${e.UUID}">${e.Name}</li>`).reduce((a,b)=>a+b,'');
