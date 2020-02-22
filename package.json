@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild -p -t msnodesqlv8",
-    "rename": "node -e \"require('fs').rename('dist/config/conf.dev.json', 'dist/config/conf.json', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\""
+    "rename": "node -e \"require('fs').rename('dist/config/conf.dev.json', 'dist/config/conf.json', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\"",
+    "cli": "node .\\js\\framework\\dev\\cli"
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [
