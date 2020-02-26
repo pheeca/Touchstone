@@ -7,7 +7,7 @@ const Entity =  require('./js/framework/modelling/entity');
 const setimmediate = require("setimmediate");
 
 // All of the Node.js APIs are available in the preload process.
-debugger
+
 global.setimmediate = setimmediate;
 
 // It has the same sandbox as a Chrome extension.

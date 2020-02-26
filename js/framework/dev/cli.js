@@ -34,21 +34,35 @@ function getArgs () {
     return args;
 }
 
-function executeCommand(){
+async function executeCommand(){
     let parameters =getArgs ();
+    let ResolvedFunct = null;
     Object.keys(parameters).forEach(function(key) {
         var funct = parameters[key];
+        let objMap = {};
+        Object.keys(functions).forEach(e=>{
+            objMap[e.toLocaleLowerCase()]=e;
+        });
+        let functName = objMap[key.toLocaleLowerCase()];
+        let functName2 = objMap[funct.toLocaleLowerCase()];
         
-        if (typeof functions[key] === "function") 
+        if (typeof functions[functName] === "function") 
         {  
-            console.log(functions[key](parameters));
+            ResolvedFunct=functions[functName];
             return;
-        }else if(typeof functions[funct] === "function"){
-            console.log(functions[funct](parameters));
+        }else if(typeof functions[functName2] === "function"){
+            ResolvedFunct=functions[functName2];
             return
         }
       });
-
+      if(ResolvedFunct){
+        let possiblePromise = await ResolvedFunct(parameters);
+        console.log(possiblePromise);
+        process.exit(0);
+      }else{
+        console.log("No proper command function");
+        process.exit(1);
+      }
 }
 
 executeCommand();
