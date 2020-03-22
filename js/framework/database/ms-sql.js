@@ -132,6 +132,35 @@ module.exports = function (schema) {
         return { Success: true, Message: _query.toString() };
     };
 
+    this.getSchemaQueryFromModel =  function (model,schema) {
+        
+        let _query=squelcreate()
+        .table(model.Name);
+        let constraintExists = false;
+        let cols=model.Columns;
+        if(model.IsAuditEnabled||schema.options.AuditEnabled){
+            cols=cols.concat(schema.Model.AuditColumns);
+        }
+        if(model.IsTenantEnabled||schema.options.MultiTenancy.IsEnabled){
+            cols=cols.concat(schema.Model.TenantColumns);
+        }
+        cols.forEach(Column => {
+            _query= _query.field(Column.Name,Column.SQLType,Column.Constraints);
+            if(Column.Constraints.IsNull||Column.Constraints.IsUnique||Column.Constraints.IsPrimary||Column.RefType){
+                let refModel=null;
+                if(Column.RefType){
+                    refModel = schema.Model.DBModels.filter(m=>m.UUID==Column.RefType)[0];
+                }
+                constraintExists = true;
+                _query= _query.constraint(Column.Name,Column.Constraints,refModel);
+            }
+        }); 
+        if(constraintExists){
+            _query= _query.addConstraints(model.Name)
+        }
+        return { Success: true, Message: _query.toString() };
+    };
+
 
     this.Test= function()
     {

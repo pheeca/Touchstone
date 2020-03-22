@@ -1,21 +1,19 @@
 {
   "name": "touchstone",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Touchstone: Code Generation Framework",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild -p -t msnodesqlv8",
     "rename": "node -e \"require('fs').rename('dist/config/conf.dev.json', 'dist/config/conf.json', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\"",
-    "cli": "node .\\js\\framework\\dev\\cli"
+    "cli": "node .\\js\\framework\\dev\\cli",
+    "testcli":"npm run cli -- --generateSchemaFromDB --src=storage/test.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=EROB;User id=sa;password=password1\" --echooff"
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Touchstone",
+    "domain modeling"
   ],
   "author": "MNC",
   "license": "CC0-1.0",

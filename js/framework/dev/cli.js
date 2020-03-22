@@ -1,5 +1,5 @@
 
-var schemaGeneration = require('./sample/schemaGeneration');
+var schemaGeneration = require('./sample/schemaGenerationFromDB');
 
 let functions = Object.assign({
 }, schemaGeneration);
@@ -13,9 +13,8 @@ function getArgs () {
         if (arg.slice(0,2) === '--') {
             const longArg = arg.split('=');
             const longArgFlag = longArg[0].slice(2,longArg[0].length);
-            const longArgValue = longArg.length > 1 ? longArg[1] : true;
+            const longArgValue = longArg.length > 1 ? longArg.slice(1).join('=') : true;
             args[longArgFlag] = longArgValue;
-            
         }
         // flags
         else if (arg[0] === '-') {
@@ -44,7 +43,7 @@ async function executeCommand(){
             objMap[e.toLocaleLowerCase()]=e;
         });
         let functName = objMap[key.toLocaleLowerCase()];
-        let functName2 = objMap[funct.toLocaleLowerCase()];
+        let functName2 = funct.toLocaleLowerCase?objMap[funct.toLocaleLowerCase()]:'';
         
         if (typeof functions[functName] === "function") 
         {  
@@ -55,9 +54,11 @@ async function executeCommand(){
             return
         }
       });
-      if(ResolvedFunct){
+    if (ResolvedFunct) {
         let possiblePromise = await ResolvedFunct(parameters);
-        console.log(possiblePromise);
+        if (!parameters['echooff']) {
+            console.log(possiblePromise);
+        }
         process.exit(0);
       }else{
         console.log("No proper command function");
