@@ -7,9 +7,10 @@
     "start": "electron .",
     "rebuild": "electron-rebuild -p -t msnodesqlv8",
     "rename": "node -e \"require('fs').rename('dist/config/conf.dev.json', 'dist/config/conf.json', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\"",
-    "cli": "node .\\js\\framework\\cli\\cli",
+    "cli": "node .\\js\\touchstone\\cli\\cli",
     "generateDBSchema":"npm run cli -- --generateSchemaFromDB --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --echooff",
-    "generateDBFromSchema":"npm run cli -- --generateDBFromSchema --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff"
+    "generateDBFromSchema":"npm run cli -- --generateDBFromSchema --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff",
+    "model":"npm run cli -- --modelfromdb --src=storage/test1.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff"
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [

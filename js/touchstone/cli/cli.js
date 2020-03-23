@@ -1,8 +1,8 @@
 
-var schemaGeneration = require('../dev/sample/schemaGenerationFromDB');
+var framework = require('../engine/framework/index');
 
 let functions = Object.assign({
-}, schemaGeneration);
+}, framework);
 function getArgs () {
     const args = {};
     process.argv

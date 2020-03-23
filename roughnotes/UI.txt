@@ -37,6 +37,8 @@ Touchstone architecture
 ### Extension
 ## CLI
 ## UI
+## Draft
+
 .
 └── Touchstone
     ├── Engine
@@ -46,9 +48,23 @@ Touchstone architecture
     ├── Components
     │   ├── Platform
     │   └── Extension
-    └── CLI
+    ├── CLI
+    └── UI
 
 
+What to build priority
+
+Engine
+Components
+CLI
+API Bus
+UI
+---------------------------------------------
+
+
+Engine Features
+1)Generate psuedo model from Existing database
+2)Generate database from psuedomodel
 
 
 
