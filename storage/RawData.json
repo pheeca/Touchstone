@@ -1,0 +1,233 @@
+{
+    "Model": [
+        {
+            "UUID": "243134b8-740f-48e2-9304-b0c9386e70e4",
+            "Name": "Default",
+            "DBModels": [
+                {
+                    "UUID": "78ccc8a5-a9b4-44e1-8326-cda68e0baef7",
+                    "Module": "6858e003-0608-47fe-87d1-95f2b81f3ddc",
+                    "IsVirtual": false,
+                    "CustomSQL": null,
+                    "Name": "RawTweets",
+                    "Notes": "Raw Tweets",
+                    "IsEnumeratedType": false,
+                    "EnumeratedValues": {},
+                    "IsAuditEnabled": true,
+                    "IsTenantEnabled": null,
+                    "Columns": [
+                        {
+                            "UUID": "6dcc9eda-5317-4ffe-a0a1-e83c203d6275",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "TweetData",
+                            "OverwriteDBName": "TweetData",
+                            "Notes": "Tweet Data",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(MAX)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "c1b26776-53c8-4d2e-8752-6ed54db23147",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "LastUpdatedOn",
+                            "OverwriteDBName": "LastUpdatedOn",
+                            "Notes": "Last Updated On",
+                            "Type": "DateTime",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "datetime",
+                            "DefaultValue": null
+                        }
+                    ]
+                },
+                {
+                    "UUID": "0545e8e8-0da7-43eb-9b59-fa6c76acea3c",
+                    "Module": "6858e003-0608-47fe-87d1-95f2b81f3ddc",
+                    "IsVirtual": false,
+                    "CustomSQL": null,
+                    "Name": "tempmentioneduser",
+                    "Notes": "tempmentioneduser",
+                    "IsEnumeratedType": false,
+                    "EnumeratedValues": {},
+                    "IsAuditEnabled": true,
+                    "IsTenantEnabled": null,
+                    "Columns": [
+                        {
+                            "UUID": "8b79299a-6137-49ef-91b3-521d0e8f0005",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "RawData2_Users",
+                            "OverwriteDBName": "RawData2_Users",
+                            "Notes": "Raw Data2_ Users",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "cafa293f-382c-4a2d-ba42-dbb3f400c161",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "Max_ID",
+                            "OverwriteDBName": "Max_ID",
+                            "Notes": "Max_ ID",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(500)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "5f3747a4-caf6-4d28-b491-9afb45bbd8a6",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "CreatedOn",
+                            "OverwriteDBName": "CreatedOn",
+                            "Notes": "Created On",
+                            "Type": "DateTime",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "datetime",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "34f84b6e-001e-47f1-8134-eadd5522b3c9",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "LastModifiedOn",
+                            "OverwriteDBName": "LastModifiedOn",
+                            "Notes": "Last Modified On",
+                            "Type": "DateTime",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "datetime",
+                            "DefaultValue": null
+                        }
+                    ]
+                }
+            ],
+            "StoredProc": [],
+            "ViewDBModels": [],
+            "AuditColumns": [],
+            "Modules": [
+                {
+                    "UUID": "6858e003-0608-47fe-87d1-95f2b81f3ddc",
+                    "Name": "Default"
+                }
+            ],
+            "URM": {
+                "User": null,
+                "Role": null,
+                "Page": null,
+                "Menu": null,
+                "PagePermission": null
+            },
+            "ModelInformation": {
+                "History": []
+            }
+        }
+    ],
+    "SchemaInfo": {
+        "TouchStoneParserVersion": "0.0.1"
+    },
+    "Dev": {
+        "CurrentUser": "b31a1b0b-ce49-4471-b2ca-0e101164cb9d",
+        "Users": [
+            {
+                "UUID": "b31a1b0b-ce49-4471-b2ca-0e101164cb9d",
+                "Name": "DefaultUser",
+                "EnvironmentVariables": {
+                    "Log": {
+                        "Type": "Database",
+                        "Source": "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot_Log;User id=sa;password=password1",
+                        "Logger": "Default"
+                    },
+                    "Model": {
+                        "243134b8-740f-48e2-9304-b0c9386e70e4": {
+                            "ConnectionString": "Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1"
+                        }
+                    },
+                    "SolutionFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
+                    "SolutionStartupFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
+                }
+            }
+        ]
+    },
+    "options": {
+        "ProjectName": "Default",
+        "MultiTenancy": {
+            "IsEnabled": false,
+            "TenantModel": "b6494691-77c5-4e5b-96d0-454112ec79a8"
+        },
+        "AuditEnabled": true,
+        "SolutionFolder": "",
+        "SolutionStartupFolder": "",
+        "BackEnd": {
+            "ServerType": "DOTNETCORE"
+        },
+        "Database": {
+            "ServerType": "MSSQL",
+            "ConnectionString": "",
+            "ConnectionStringLog": ""
+        }
+    }
+}

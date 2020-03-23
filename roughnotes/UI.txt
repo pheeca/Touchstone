@@ -1,0 +1,56 @@
+data-modalhorizontal
+data-url
+data-heading
+data-script
+button text
+
+
+cssClass??
+
+
+
+data-submit="true" -> form[data-url](POST) -> data-url,data-script,data-rurl,data-display,data-modalhorizontal,data-callback
+-----------------------------------------------------------
+Touchstone architecture
+
+
++---------------------+----------------------+
+|                     |         UI           |
+|         CLI         +----------------------+
+|                     |       API Bus        |
++---------------------+----------------------+
+|              Framework Engine              |
++--------------------------------------------+--------------------------------------------+
+|              Extension Engine              |              Obsolete API                  |
++---------------------+----------------------+--------------------------------------------+
+| Platform Components | Extension Components |
++---------------------+----------------------+
+
+
+# Touchstone
+## Engine
+### Framework
+### Extension
+## API Bus
+## Components
+### Platform
+### Extension
+## CLI
+## UI
+.
+└── Touchstone
+    ├── Engine
+    │   ├── Framework
+    │   └── Extension
+    ├── API Bus
+    ├── Components
+    │   ├── Platform
+    │   └── Extension
+    └── CLI
+
+
+
+
+
+
+

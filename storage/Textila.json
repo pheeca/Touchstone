@@ -1,0 +1,321 @@
+{
+    "Model": [
+        {
+            "UUID": "47b28cc3-e97b-4dfc-8b44-94192c9c4e9a",
+            "Name": "Default",
+            "DBModels": [
+                {
+                    "UUID": "1e8a56d0-773e-4f21-92dc-134de697abec",
+                    "Module": "9b9776e3-f2fd-4bdf-884d-ba1231a7a00f",
+                    "IsVirtual": false,
+                    "CustomSQL": null,
+                    "Name": "Blend",
+                    "Notes": "Blend",
+                    "IsEnumeratedType": false,
+                    "EnumeratedValues": {},
+                    "IsAuditEnabled": null,
+                    "IsTenantEnabled": null,
+                    "Columns": [
+                        {
+                            "UUID": "f9fa2869-1f7f-4351-b110-5bc8f198f47f",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "BlendId",
+                            "OverwriteDBName": "BlendId",
+                            "Notes": "Blend Id",
+                            "Type": "int",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": false,
+                                "IsUnique": true,
+                                "IsPrimary": true
+                            },
+                            "SQLType": "int",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "a287040a-374a-400f-915a-e4a4c5eab356",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "BlendName",
+                            "OverwriteDBName": "BlendName",
+                            "Notes": "Blend Name",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        }
+                    ]
+                },
+                {
+                    "UUID": "dca45641-f612-4173-a841-6972748d1fc3",
+                    "Module": "9b9776e3-f2fd-4bdf-884d-ba1231a7a00f",
+                    "IsVirtual": false,
+                    "CustomSQL": null,
+                    "Name": "Count",
+                    "Notes": "Count",
+                    "IsEnumeratedType": false,
+                    "EnumeratedValues": {},
+                    "IsAuditEnabled": true,
+                    "IsTenantEnabled": null,
+                    "Columns": [
+                        {
+                            "UUID": "64f02cf7-818b-424d-9527-8ad9d052f7d6",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "CountId",
+                            "OverwriteDBName": "CountId",
+                            "Notes": "Count Id",
+                            "Type": "int",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": false,
+                                "IsUnique": true,
+                                "IsPrimary": true
+                            },
+                            "SQLType": "int",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "e6211129-eab8-4d57-8d5b-6d42ee6facb0",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "CountName",
+                            "OverwriteDBName": "CountName",
+                            "Notes": "Count Name",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "b97cdab5-5575-4b5a-ac76-741ccc641997",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "SingleDouble",
+                            "OverwriteDBName": "SingleDouble",
+                            "Notes": "Single Double",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "78b518fa-ea19-4206-9eb6-ee395659f31d",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "Blend",
+                            "OverwriteDBName": "Blend",
+                            "Notes": "Blend",
+                            "Type": "int",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "int",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "087b098f-9f48-4325-833b-c3868d1f39c7",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "Description",
+                            "OverwriteDBName": "Description",
+                            "Notes": "Description",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(200)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "90a95785-27c7-4abb-93f8-811b4aa26a60",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "CreatedBy",
+                            "OverwriteDBName": "CreatedBy",
+                            "Notes": "Created By",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "abd33749-5602-4eb4-a35c-43688d227db3",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "ModifiedBy",
+                            "OverwriteDBName": "ModifiedBy",
+                            "Notes": "Modified By",
+                            "Type": "string",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "nvarchar(50)",
+                            "DefaultValue": null
+                        },
+                        {
+                            "UUID": "3948a0c4-2dbf-4f62-b5db-4d97a8defe77",
+                            "IsComputed": false,
+                            "ComputedSQL": null,
+                            "Name": "ModifiedOn",
+                            "OverwriteDBName": "ModifiedOn",
+                            "Notes": "Modified On",
+                            "Type": "DateTime",
+                            "RefType": null,
+                            "RefTypeValue": {
+                                "BindingKey": null,
+                                "BindingDisplayValue": null,
+                                "FilterColumns": {}
+                            },
+                            "Constraints": {
+                                "IsNull": true,
+                                "IsUnique": false,
+                                "IsPrimary": false
+                            },
+                            "SQLType": "datetime",
+                            "DefaultValue": null
+                        }
+                    ]
+                }
+            ],
+            "StoredProc": [],
+            "ViewDBModels": [],
+            "AuditColumns": [],
+            "Modules": [
+                {
+                    "UUID": "9b9776e3-f2fd-4bdf-884d-ba1231a7a00f",
+                    "Name": "Default"
+                }
+            ],
+            "URM": {
+                "User": null,
+                "Role": null,
+                "Page": null,
+                "Menu": null,
+                "PagePermission": null
+            },
+            "ModelInformation": {
+                "History": []
+            }
+        }
+    ],
+    "SchemaInfo": {
+        "TouchStoneParserVersion": "0.0.1"
+    },
+    "Dev": {
+        "CurrentUser": "343222d8-a4b3-479c-9f6f-51ff59998e84",
+        "Users": [
+            {
+                "UUID": "343222d8-a4b3-479c-9f6f-51ff59998e84",
+                "Name": "DefaultUser",
+                "EnvironmentVariables": {
+                    "Log": {
+                        "Type": "Database",
+                        "Source": "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot_Log;User id=sa;password=password1",
+                        "Logger": "Default"
+                    },
+                    "Model": {
+                        "47b28cc3-e97b-4dfc-8b44-94192c9c4e9a": {
+                            "ConnectionString": "Server=PHEECA\\SQLEXPRESS2016;Database=Textila;User id=sa;password=password1"
+                        }
+                    },
+                    "SolutionFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
+                    "SolutionStartupFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
+                }
+            }
+        ]
+    },
+    "options": {
+        "ProjectName": "Default",
+        "MultiTenancy": {
+            "IsEnabled": false,
+            "TenantModel": "b6494691-77c5-4e5b-96d0-454112ec79a8"
+        },
+        "AuditEnabled": true,
+        "SolutionFolder": "",
+        "SolutionStartupFolder": "",
+        "BackEnd": {
+            "ServerType": "DOTNETCORE"
+        },
+        "Database": {
+            "ServerType": "MSSQL",
+            "ConnectionString": "",
+            "ConnectionStringLog": ""
+        }
+    }
+}

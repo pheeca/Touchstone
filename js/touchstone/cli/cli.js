@@ -1,5 +1,5 @@
 
-var schemaGeneration = require('./sample/schemaGenerationFromDB');
+var schemaGeneration = require('../dev/sample/schemaGenerationFromDB');
 
 let functions = Object.assign({
 }, schemaGeneration);

@@ -1,9 +1,9 @@
 var fs = require('fs');
 const path = require('path');
-const dev = require('./js/framework/main/dev');
-const stackFactory = require('./js/framework/main/stackFactory');
-const Module =  require('./js/framework/modelling/module');
-const Entity =  require('./js/framework/modelling/entity');
+const dev = require('./js/touchstone/obsolete api/main/dev');
+const stackFactory = require('./js/touchstone/obsolete api/main/stackFactory');
+const Module =  require('./js/touchstone/obsolete api/modelling/module');
+const Entity =  require('./js/touchstone/obsolete api/modelling/entity');
 const setimmediate = require("setimmediate");
 
 // All of the Node.js APIs are available in the preload process.

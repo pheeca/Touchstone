@@ -12,11 +12,18 @@ module.exports = {
          module.exports.saveSchema(params,schema);
         return schema;
     },
+    /*async generateDBFromSchema(params) {
+        let schema = await module.exports.getdata(params);
+        return schema;
+    },*/
     uuidv4() {
         return uuidV4();
     },
-    getdata() {
-        return JSON.parse(fs.readFileSync('./storage/schema.json', 'utf8'));
+    getdata(params) {
+        if(!params.src){
+            console.log('src invalid')
+        }
+        return JSON.parse(fs.readFileSync(params.src, 'utf8'));
     },
 
     async getDatabase(query, params) {
@@ -68,7 +75,7 @@ module.exports = {
         FROM INFORMATION_SCHEMA.TABLES t
         
        WHERE 
-       t.TABLE_TYPE='BASE TABLE' and t.TABLE_CATALOG='EROB'
+       t.TABLE_TYPE='BASE TABLE'
       `;
         /*
 | DATA_TYPE | NUMERIC_PRECISION_RADIX | NUMERIC_PRECISION | NUMERIC_SCALE |
@@ -86,7 +93,6 @@ module.exports = {
         let _props = await module.exports.getProps(params) || [];
         let _propsInfo = await module.exports.getPropsInfo(params) || [];
         let _entities = await module.exports.getEntities(params) || [];
-
         _entities.forEach((entity) => {
             entity.Props = _props.filter(p => p.TABLE_NAME == entity.TABLE_NAME);
             entity.Props.forEach((prop) => {

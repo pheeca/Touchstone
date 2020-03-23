@@ -1,0 +1,72 @@
+{
+    "Model": [
+        {
+            "UUID": "833701db-0ab0-45d7-b8c6-5ef818ee00cb",
+            "Name": "Default",
+            "DBModels": [],
+            "StoredProc": [],
+            "ViewDBModels": [],
+            "AuditColumns": [],
+            "Modules": [
+                {
+                    "UUID": "93188e76-ee53-4448-b2d4-e5d7a188477b",
+                    "Name": "Default"
+                }
+            ],
+            "URM": {
+                "User": null,
+                "Role": null,
+                "Page": null,
+                "Menu": null,
+                "PagePermission": null
+            },
+            "ModelInformation": {
+                "History": []
+            }
+        }
+    ],
+    "SchemaInfo": {
+        "TouchStoneParserVersion": "0.0.1"
+    },
+    "Dev": {
+        "CurrentUser": "c9060cda-7d64-44ce-aafa-dda1074ef1b0",
+        "Users": [
+            {
+                "UUID": "c9060cda-7d64-44ce-aafa-dda1074ef1b0",
+                "Name": "DefaultUser",
+                "EnvironmentVariables": {
+                    "Log": {
+                        "Type": "Database",
+                        "Source": "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot_Log;User id=sa;password=password1",
+                        "Logger": "Default"
+                    },
+                    "Model": {
+                        "833701db-0ab0-45d7-b8c6-5ef818ee00cb": {
+                            "ConnectionString": "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot;User id=sa;password=password1"
+                        }
+                    },
+                    "SolutionFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
+                    "SolutionStartupFolder": "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
+                }
+            }
+        ]
+    },
+    "options": {
+        "ProjectName": "Default",
+        "MultiTenancy": {
+            "IsEnabled": false,
+            "TenantModel": "b6494691-77c5-4e5b-96d0-454112ec79a8"
+        },
+        "AuditEnabled": true,
+        "SolutionFolder": "",
+        "SolutionStartupFolder": "",
+        "BackEnd": {
+            "ServerType": "DOTNETCORE"
+        },
+        "Database": {
+            "ServerType": "MSSQL",
+            "ConnectionString": "",
+            "ConnectionStringLog": ""
+        }
+    }
+}
