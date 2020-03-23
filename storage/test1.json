@@ -1,12 +1,12 @@
 {
     "Model": [
         {
-            "UUID": "47c77919-2d38-46c6-b88f-d34e7666faa5",
+            "UUID": "9f56590f-9392-4037-aaa3-ddf92ceb1fff",
             "Name": "Default",
             "DBModels": [
                 {
-                    "UUID": "38d96af0-42a0-4f7f-9683-e35e000386a9",
-                    "Module": "ce704992-5cff-448e-bed9-97ae19428e3c",
+                    "UUID": "134ee4a4-df09-47e3-a05b-4478e0f49e7f",
+                    "Module": "f63a3729-5292-4f27-a43f-3b4695dd7b1d",
                     "IsVirtual": false,
                     "CustomSQL": null,
                     "Name": "RawTweets",
@@ -17,7 +17,7 @@
                     "IsTenantEnabled": null,
                     "Columns": [
                         {
-                            "UUID": "aa04f82c-2c3a-415a-b2ac-bbb69defe77b",
+                            "UUID": "c86ee85d-190c-4878-b85f-c638547b9529",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "TweetData",
@@ -39,7 +39,7 @@
                             "DefaultValue": null
                         },
                         {
-                            "UUID": "d5787585-956c-46c5-bd62-c138f96cd078",
+                            "UUID": "d3cefcac-b630-4159-bcaf-1817c51c3e94",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "LastUpdatedOn",
@@ -63,8 +63,8 @@
                     ]
                 },
                 {
-                    "UUID": "61dd1d55-31ed-485f-88ea-d337878a88a2",
-                    "Module": "ce704992-5cff-448e-bed9-97ae19428e3c",
+                    "UUID": "922cd951-c836-472c-99cb-8ff89375e3ba",
+                    "Module": "f63a3729-5292-4f27-a43f-3b4695dd7b1d",
                     "IsVirtual": false,
                     "CustomSQL": null,
                     "Name": "tempmentioneduser",
@@ -75,7 +75,7 @@
                     "IsTenantEnabled": null,
                     "Columns": [
                         {
-                            "UUID": "57053cac-aff8-43ca-926e-0b7935256c14",
+                            "UUID": "37ed04aa-aa47-4fd2-8138-af4809f04dec",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "RawData2_Users",
@@ -97,7 +97,7 @@
                             "DefaultValue": null
                         },
                         {
-                            "UUID": "bd6ded0f-c111-4104-80b5-80a0f66c61ab",
+                            "UUID": "4f63abda-e50b-476b-b420-509da87609dd",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "Max_ID",
@@ -119,7 +119,7 @@
                             "DefaultValue": null
                         },
                         {
-                            "UUID": "9084bd9f-7cc8-4a68-ad36-693057b1637c",
+                            "UUID": "ec862fdc-2b63-437c-a4af-79b2bf100127",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "CreatedOn",
@@ -141,7 +141,7 @@
                             "DefaultValue": null
                         },
                         {
-                            "UUID": "9cad8952-b8bd-4f96-bd51-eff0bb5705fd",
+                            "UUID": "5054ab65-84b5-4f5e-8b81-0638ff108e09",
                             "IsComputed": false,
                             "ComputedSQL": null,
                             "Name": "LastModifiedOn",
@@ -170,7 +170,7 @@
             "AuditColumns": [],
             "Modules": [
                 {
-                    "UUID": "ce704992-5cff-448e-bed9-97ae19428e3c",
+                    "UUID": "f63a3729-5292-4f27-a43f-3b4695dd7b1d",
                     "Name": "Default"
                 }
             ],
@@ -190,10 +190,10 @@
         "TouchStoneParserVersion": "0.0.1"
     },
     "Dev": {
-        "CurrentUser": "00fb7fd7-484b-4366-98e4-7e42088eead6",
+        "CurrentUser": "1a53e1c7-cb00-40d9-baed-fa7bde5fd12f",
         "Users": [
             {
-                "UUID": "00fb7fd7-484b-4366-98e4-7e42088eead6",
+                "UUID": "1a53e1c7-cb00-40d9-baed-fa7bde5fd12f",
                 "Name": "DefaultUser",
                 "EnvironmentVariables": {
                     "Log": {
@@ -202,7 +202,7 @@
                         "Logger": "Default"
                     },
                     "Model": {
-                        "47c77919-2d38-46c6-b88f-d34e7666faa5": {
+                        "9f56590f-9392-4037-aaa3-ddf92ceb1fff": {
                             "ConnectionString": "Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1"
                         }
                     },

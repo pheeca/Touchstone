@@ -4,18 +4,16 @@ class TechRepositoryFactory {
    /*   this.speed = 0;
       this.name = name;*/
     }
-    getStorageRepositoryByDataSource(source){
+    async getStorageRepositoryByDataSource(source){
         let stack = stackregistry();
-        let repository= stack.filter(stk=>stk.isValidDatasource(source))[0]||null;
+        
+        let repository=  await stack.filter(async stk=>{
+          return await stk.isValidDatasource(source);
+        })[0]||null;
+        if(!repository){
+          return null;
+        }
         return new repository();
     }
-    /*run(speed) {
-      this.speed = speed;
-      alert(`${this.name} runs with speed ${this.speed}.`);
-    }
-    stop() {
-      this.speed = 0;
-      alert(`${this.name} stands still.`);
-    }*/
   }
 module.exports =TechRepositoryFactory;

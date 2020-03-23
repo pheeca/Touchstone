@@ -64,7 +64,6 @@ class Internal {
         let entityDBArray = await this.getEntitiesFilled(params);
         let moduleId = schemahelper.uuidv4();
         let modelId = schemahelper.uuidv4();
-        let userId = schemahelper.uuidv4();
         let schema = entityDBArray.map((o) => schemahelper.getDefaultEntity({
             "Module": moduleId,
             "Name": o.TABLE_NAME,
@@ -75,7 +74,6 @@ class Internal {
                 UUID: modelId,
                 DBModels: schema,
                 "ModulesUUID": moduleId,
-                CurrentUser: userId,
                 DatabaseServerType: this.obj.constructor.tech,
             });
         upperSchema.Dev.Users[0].EnvironmentVariables.Model[modelId] = {

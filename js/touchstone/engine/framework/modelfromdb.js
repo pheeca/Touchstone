@@ -1,7 +1,7 @@
 var techRepositoryFactory = require("./../../components/framework/techRepositoryFactory");
-module.exports = function (param) {
+module.exports =async function (param) {
     let factory = new techRepositoryFactory();
-    let db = factory.getStorageRepositoryByDataSource(param.db);
+    let db = await factory.getStorageRepositoryByDataSource(param.db);
     if(!db){
         return null;
     }

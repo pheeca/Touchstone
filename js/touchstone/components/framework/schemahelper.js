@@ -73,7 +73,7 @@ module.exports = {
         return col;
     }
     ,getDefaultSchema(obj) {
-        let userId =this.uuidv4();
+        let currentUser =obj["CurrentUser"]||this.getDefaultUser({});
         let col = {
             Model: [{
                 UUID: obj["UUID"] || this.uuidv4(),
@@ -101,22 +101,9 @@ module.exports = {
                 TouchStoneParserVersion: touchstoneVersion
             },
             Dev: {
-                CurrentUser: obj["CurrentUser"]||userId,
+                CurrentUser: currentUser.UUID,
                 Users: [
-                    {
-                        UUID: obj["CurrentUser"]||userId,
-                        Name: "DefaultUser",
-                        EnvironmentVariables: {
-                            Log: {
-                                Type: "Database",
-                                Source: "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot_Log;User id=sa;password=password1",
-                                Logger: "Default"
-                            },
-                            Model: {},
-                            SolutionFolder: "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
-                            SolutionStartupFolder: "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
-                        }
-                    }
+                    currentUser
                 ]
             },
             options: {
@@ -139,5 +126,22 @@ module.exports = {
             },
         };
         return col;
+    },getDefaultUser(obj) {
+        let userId =this.uuidv4();
+        let defaultUser =  {
+            UUID: obj["UUID"]||userId,
+            Name: obj["Name"]||"DefaultUser",
+            EnvironmentVariables: {
+                Log: {
+                    Type: "Database",
+                    Source: "Server=PHEECA\\SQLEXPRESS2016;Database=SSpot_Log;User id=sa;password=password1",
+                    Logger: "Default"
+                },
+                Model: {},
+                SolutionFolder: "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core",
+                SolutionStartupFolder: "D:\\FAHEEM\\Computer Science\\Commercial Work\\sspotcore\\SSpot_Core\\SSpot_Core"
+            }
+        };
+        return defaultUser;
     }
 }
