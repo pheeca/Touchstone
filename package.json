@@ -10,8 +10,9 @@
     "cli": "node .\\js\\touchstone\\cli\\cli",
     "generateDBSchema":"npm run cli -- --generateSchemaFromDB --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --echooff",
     "generateDBFromSchema":"npm run cli -- --generateDBFromSchema --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff",
-    "model":"npm run cli -- --modelfromdb --src=storage/test1.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff",
-    "modeldb":"npm run cli -- --dbfrommodel --src=storage/test1.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff"
+    "model":"npm run cli -- --modelfromdb --src=storage/erob.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=erob;User id=sa;password=password1\" --xechooff",
+    "modelToDb":"cls && npm run cli -- --dbfrommodel --src=storage/erob.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=erobtest2;User id=sa;password=password1\" --xechooff",
+    "modeltobackend":"cls && npm run cli -- --backendfrommodel --src=storage/erob.json --xechooff"
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [

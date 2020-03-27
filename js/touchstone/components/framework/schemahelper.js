@@ -82,6 +82,7 @@ module.exports = {
                 StoredProc: [],
                 ViewDBModels: [],
                 AuditColumns: [],
+                TenantColumns:[],
                 Modules: [{
                     "UUID": obj["ModulesUUID"] || this.uuidv4(),
                     "Name": obj["ModulesName"] || "Default"

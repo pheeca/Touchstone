@@ -65,8 +65,21 @@ UI
 Engine Features
 1)Generate psuedo model from Existing database
 2)Generate database from psuedomodel
+3) Create organization for structure of backend & front End
+----------------------------------------------
 
+Front End are flavours of Backend 
+i.e single FrontEnd(e.g vue) will be implemented differently for different backends(webapi and mvc) with
+EndToEndConnector connecting them
 
-
+Map of Backend to valid Frontend
+[{
+  Name: "WebApi",
+  DisplayName:"WebApi",
+  FrontEnd:[{
+        Name:"None",
+        DisplayName:"None"
+  }]
+}]
 
 

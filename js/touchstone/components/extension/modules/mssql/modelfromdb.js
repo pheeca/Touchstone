@@ -1,5 +1,8 @@
 
 let schemahelper = require('./../../../framework/schemahelper');
+
+var helper = require('./mssqlhelper');
+
 class Internal {
 
     constructor(_this) {
@@ -19,14 +22,13 @@ class Internal {
     t.TABLE_TYPE='BASE TABLE' and t.TABLE_CATALOG='EROB' and (c.NUMERIC_PRECISION is not null
         AND NOT (c.NUMERIC_PRECISION=10 AND c.NUMERIC_PRECISION_RADIX=10))
          */
-
-        let data = await this.obj.getData(params.db, query);
+        let data = await helper.getData(params.db, query);
         return data;
     }
     async  getPropsInfo(params) {
         let query = `select tc.CONSTRAINT_TYPE,kcu.TABLE_NAME,kcu.COLUMN_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
     inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu on tc.CONSTRAINT_NAME=kcu.CONSTRAINT_NAME`;
-        let data = await this.obj.getData(params.db, query);
+        let data = await helper.getData(params.db, query);
         return data;
     }
     async  getEntities(params) {
@@ -45,7 +47,7 @@ class Internal {
     |   decimal |                      10 |                12 |            10 |
     |      real |                       2 |                24 |        (null) |
         */
-        let data = await this.obj.getData(params.db, query);
+        let data = await helper.getData(params.db, query);
         return data;
     }
     async  getEntitiesFilled(params) {
@@ -74,7 +76,7 @@ class Internal {
                 UUID: modelId,
                 DBModels: schema,
                 "ModulesUUID": moduleId,
-                DatabaseServerType: this.obj.constructor.tech,
+                DatabaseServerType: helper.constructor.tech,
             });
         upperSchema.Dev.Users[0].EnvironmentVariables.Model[modelId] = {
             ConnectionString: params.db
@@ -196,7 +198,7 @@ class Internal {
     FROM INFORMATION_SCHEMA.COLUMNS c
     group by c.COLUMN_NAME,c.DATA_TYPE
    order by CountPc desc`;
-        let data = await this.obj.getData(params.db, query);
+        let data = await helper.getData(params.db, query);
         data.forEach((d, i) => {
             let nextCountPc = i < data.length - 1 ? data[i + 1].CountPc : d.CountPc;
             d.Diff = d.CountPc - nextCountPc;

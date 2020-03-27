@@ -168,6 +168,7 @@
             "StoredProc": [],
             "ViewDBModels": [],
             "AuditColumns": [],
+            "TenantColumns":[],
             "Modules": [
                 {
                     "UUID": "6858e003-0608-47fe-87d1-95f2b81f3ddc",
