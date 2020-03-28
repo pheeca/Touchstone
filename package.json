@@ -12,7 +12,7 @@
     "generateDBFromSchema":"npm run cli -- --generateDBFromSchema --src=storage/RawData.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=RawData;User id=sa;password=password1\" --xechooff",
     "model":"npm run cli -- --modelfromdb --src=storage/erob.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=erob;User id=sa;password=password1\" --xechooff",
     "modelToDb":"cls && npm run cli -- --dbfrommodel --src=storage/erob.json --db=\"Server=PHEECA\\SQLEXPRESS2016;Database=erobtest2;User id=sa;password=password1\" --xechooff",
-    "modeltobackend":"cls && npm run cli -- --backendfrommodel --src=storage/erob.json --xechooff"
+    "modeltobackend":"cls && npm run cli -- --backendfrommodel --src=storage/erob.json --xechooff --starthere"
   },
   "repository": "https://github.com/pheeca/Touchstone",
   "keywords": [
